@@ -11,40 +11,46 @@ public class App {
         // case 1: bis Input 0
         // do while
         double number, largest;
-        int x = 1;
+        int counter = 1;
         largest = 1;
 
+        System.out.print("Number 1: ");
+        number = scanner.nextDouble();
+        largest = number;
+
+        if( (number <= 0) && (counter==1)) {
+            System.out.println("No number entered.");
+        } else {
+            while (number>0){
+                counter++;
+                System.out.print("Number" + counter + ": ");
+                number = scanner.ne
+            }
 
 
-       /* do {
-            System.out.print("Number " + x + ": ");
-            number = scanner.nextDouble();
 
-            if( (number <= 0) && (x==1)){
-                System.out.print("No number entered.");
-                x++;
-            }else if ((number <=0) && (x>1)) {
+            if ((number <=0) && (counter>1)) {
                 System.out.print("The largest number is ");
-                System.out.printf("%.2f", largest);
+                System.out.printf("%,.2f", largest);
                 System.out.println();
-                x++;
+                counter++;
             }else if (number > largest) {
                 largest = number;
-                x++;
+                counter++;
             }else
-                x++;
-        }while (number != 0) ;*/
+                counter++;
+        }while (number != 0) ;
 
 
     }
 
-    //todo Task 2
+    //todo Task 2 OK
     public void stairs(){
         // input your solution here
         // keine Arrays verwenden
         //debugger benutzen
         //Schleife verschachteln
-        /*int n, counter;
+        int n, counter;
         int rows;
         int cols;
         counter = 1;
@@ -56,18 +62,17 @@ public class App {
             for (cols = 0; cols <= rows; cols++, counter++ ){
                 System.out.print(counter + " ");
             }System.out.println("");
-        }*/
+        }
 
 
 
 
     }
 
-    //todo Task 3
+    //todo Task 3 OK
     public void printPyramid(){
         // input your solution here
-       /* int rows = 6;
-
+        int rows = 6;
 
 
 
@@ -81,45 +86,66 @@ public class App {
 
 
 
-        }*/
+        }
 
 
     }
 
-    //todo Task 4
+    //todo Task 4 - OK
     public void printRhombus(){
         // input your solution here
-        int h;
-        char c;
+        int h; // size of rhombus
+        char c; // we will use this later as a number
+        int i, j, k;
+
 
         System.out.print("h: ");
         h = scanner.nextInt();
         System.out.print("c: ");
-        c = scanner.next().charAt(0); //stackoverflow.com
-        int letter = c ;
-        int count = 0;
-        int number = 0;
+        c = scanner.next().charAt(0);
+        if (h%2==0){
+            System.out.println("Invalid number!");
+            return;
+        }
+
+        int columns = 1, spaces = h/2 , rows, count = 0, middle;
+        char d;
+
+        for ( i = 1; i <= h ; i++){
 
 
+            for (j = 1; j <= spaces; j++){
+                System.out.print(" ");
 
-        for ( int i = 1; i <= h ; i++){
-
-            if ( i <= h/2 + 1){
-                count = 2 * i - 1;
-                number = i;
+            }if( i < h/2 +1){
+                count = i;
+                d = (char) (c - count + 1) ;
+                spaces--;
             }else{
-                count = count - 2;
-                number = i;
-            }
-            for( int j = 1; j <= count ; j++){
-                System.out.print(number);
+                count = h + 1 - i;
+                d = (char) (c - count + 1);
+                spaces++;
             }
 
 
+            for (k = 1 ; k <= columns; k++){
+                middle = columns/2+1;
+                System.out.print(d);
+                if(k < middle){
+                    count--;
+                    d++;
+                }else{
+                    count++;
+                    d--;
+                }
 
-
-
+            }
             System.out.println();
+            if( i < h/2 +1){
+                columns = columns + 2;
+            }else{
+                columns = columns - 2;
+            }
         }
 
 
