@@ -10,41 +10,35 @@ public class App {
         // input your solution here
         // case 1: bis Input 0
         // do while
-        double number, largest;
-        int counter = 1;
-        largest = 1;
+        double number;
+        int x = 1;
+        double largest;
 
         System.out.print("Number 1: ");
         number = scanner.nextDouble();
         largest = number;
 
-        if( (number <= 0) && (counter==1)) {
+        if( (number <= 0) && (x==1)){
             System.out.println("No number entered.");
-        } else {
-            while (number>0){
-                counter++;
-                System.out.print("Number" + counter + ": ");
-                number = scanner.ne
+
+        }else {
+            while (number > 0) {
+                x++;
+                System.out.print("Number " + x + ": ");
+                number = scanner.nextDouble();
+
+                if (number > largest)
+                    largest = number;
             }
-
-
-
-            if ((number <=0) && (counter>1)) {
-                System.out.print("The largest number is ");
-                System.out.printf("%,.2f", largest);
-                System.out.println();
-                counter++;
-            }else if (number > largest) {
-                largest = number;
-                counter++;
-            }else
-                counter++;
-        }while (number != 0) ;
+            System.out.print("The largest number is ");
+            System.out.printf("%,.2f", largest);
+            System.out.println();
+        }
 
 
     }
 
-    //todo Task 2 OK
+    //todo Task 2
     public void stairs(){
         // input your solution here
         // keine Arrays verwenden
@@ -56,6 +50,9 @@ public class App {
         counter = 1;
         System.out.print("n: ");
         n = scanner.nextInt();
+        if (n<0){
+            System.out.println("Invalid number!");
+        }
 
 
         for (rows = 0; rows < n; rows++){
@@ -69,10 +66,11 @@ public class App {
 
     }
 
-    //todo Task 3 OK
+    //todo Task 3
     public void printPyramid(){
         // input your solution here
         int rows = 6;
+
 
 
 
@@ -91,7 +89,7 @@ public class App {
 
     }
 
-    //todo Task 4 - OK
+    //todo Task 4
     public void printRhombus(){
         // input your solution here
         int h; // size of rhombus
@@ -108,7 +106,7 @@ public class App {
             return;
         }
 
-        int columns = 1, spaces = h/2 , rows, count = 0, middle;
+        int columns = 1, spaces = h/2 , count , middle;
         char d;
 
         for ( i = 1; i <= h ; i++){
@@ -127,10 +125,10 @@ public class App {
                 spaces++;
             }
 
-
             for (k = 1 ; k <= columns; k++){
                 middle = columns/2+1;
                 System.out.print(d);
+
                 if(k < middle){
                     count--;
                     d++;
@@ -154,21 +152,96 @@ public class App {
 
 
 
+
     }
 
     //todo Task 5
     public void marks(){
         // input your solution here
-        //
+
+
+        int negative = 0;
+        int counter = 1;
+        double sum = 0;
+        double average = 0;
+
+
+
+
+        System.out.print("Mark " + counter + ": ");
+        int mark = scanner.nextInt();
+
+        while(mark != 0){
+
+            if (mark>5 || mark<0){
+                System.out.println("Invalid mark!");
+
+            }else if (mark ==5){
+                sum = sum + mark;
+                negative++;
+                counter++;
+
+            }else{
+                sum = sum + mark;
+                counter++;
+
+            }
+            System.out.print("Mark "+ counter + ": ");
+            mark = scanner.nextInt();
+            average = sum / (counter - 1);
+
+        }
+        System.out.print("Average: " );
+        System.out.printf("%.2f", average);
+        System.out.println();
+        System.out.println("Negative marks: " + negative);
+
+
+
+
+
     }
 
     //todo Task 6
-    public void happyNumbers(){
+    public void happyNumbers() {
         // input your solution here
         //aufhören bei 1 oder 4
-        int n;
+
         System.out.print("n: ");
-        n = scanner.nextInt();
+        int number = scanner.nextInt();
+        int sum = 0, result = 0;
+        int remainder;
+
+
+
+        if (number <= 0) {
+            return;
+        }
+
+        while ((result != 4 && result != 1)) {
+            remainder = number % 10;
+            number = number / 10;
+            sum = sum + (remainder * remainder);
+
+
+            result = sum;
+            number = sum;
+            sum = 0;
+
+            if (result == 1) {
+                System.out.println("Happy number!");
+            }
+            if (result == 4) {
+                System.out.println("Sad number!");
+            }
+        }
+
+
+
+
+
+
+
 
 
 
