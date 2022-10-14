@@ -208,37 +208,30 @@ public class App {
     public void happyNumbers() {
         // input your solution here
         //aufhören bei 1 oder 4
+        int sum = 0;
+        int remainder, result = 0;
 
         System.out.print("n: ");
         int number = scanner.nextInt();
-        int sum = 0, result = 0;
-        int remainder;
 
+        while( result != 4 && result != 1) {
 
-
-        if (number <= 0) {
-            return;
-        }
-
-        while ((result != 4 && result != 1)) {
-            remainder = number % 10;
-            number = number / 10;
-            sum = sum + (remainder * remainder);
-
-
+            while (number > 0) {
+                remainder = number % 10;
+                sum = sum + (remainder * remainder);
+                number = number / 10;
+            }
             result = sum;
             number = sum;
             sum = 0;
+            }
 
             if (result == 1) {
                 System.out.println("Happy number!");
             }
-            if (result == 4) {
+            else {
                 System.out.println("Sad number!");
             }
-        }
-
-
 
 
 
